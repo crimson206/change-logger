@@ -1,4 +1,3 @@
-
 """
 A sample Python package with semantic release
 """
