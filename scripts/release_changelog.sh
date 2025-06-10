@@ -32,7 +32,7 @@ if [[ "$VERSION" =~ ^[0-9] ]]; then
 fi
 
 # Check if changelog file exists
-if [ ! -f "$CHANGELOG" ]; then
+if ! test -f "$CHANGELOG"; then
     echo "Error: Changelog file '$CHANGELOG' not found"
     exit 1
 fi
