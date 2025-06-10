@@ -52,6 +52,16 @@ version_variables = [
 ]
 build_command = "pip install build && python -m build"
 
+plugins = [
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
+    ["@semantic-release/changelog", {"changelogFile"="CHANGELOG.md"}],
+    "@semantic-release/git",
+    "@semantic-release/github",
+    # 필요하다면 다른 플러그인 추가:
+    # "@semantic-release/pypi",
+]
+
 # 커밋 컨벤션 설정
 [tool.semantic_release.commit_parser_options]
 allowed_tags = ["build", "chore", "ci", "docs", "feat", "fix", "perf", "style", "refactor", "test"]
