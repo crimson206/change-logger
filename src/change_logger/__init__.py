@@ -2,7 +2,7 @@
 A sample Python package with semantic release
 """
 
-__version__ = "1.2.0"
+__version__ = "1.3.0"
 __author__ = "Your Name"
 __email__ = "your.email@example.com"
 
