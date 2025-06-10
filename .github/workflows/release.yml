@@ -73,9 +73,9 @@ jobs:
       with:
         github_token: ${{ secrets.GH_TOKEN }}
 
-    - name: Publish package distributions to PyPI
-      uses: pypa/gh-action-pypi-publish@release/v1
-      if: steps.release.outputs.released == 'true'
+    # - name: Publish package distributions to PyPI
+    #   uses: pypa/gh-action-pypi-publish@release/v1
+    #   if: steps.release.outputs.released == 'true'
       # PyPI API token이 설정되어 있을 때만 실행
       # with:
       #   password: ${{ secrets.PYPI_API_TOKEN }}
