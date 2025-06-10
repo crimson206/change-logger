@@ -1,0 +1,13 @@
+# Changelog
+
+{% for version in context.history.versions %}
+## [{{ version.tag }}]({{ version.commit.hexsha }}) ({{ version.tagged_date.strftime('%Y-%m-%d') }})
+
+{% for section_name, commits in version.sections.items() %}
+### {{ section_name }}
+{% for commit in commits %}
+* {{ commit.descriptions[0] }} ([{{ commit.hexsha[:7] }}]({{ commit.hexsha }}))
+{% endfor %}
+
+{% endfor %}
+{% endfor %}
