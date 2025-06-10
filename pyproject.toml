@@ -61,7 +61,7 @@ patch_tags = ["fix", "perf"]
 # Changelog 설정
 [tool.semantic_release.changelog.default_templates]
 template_dir = "templates"
-changelog_file = "changelog.md"
+changelog_file = "CHANGELOG.md"
 include_commit_body = true
 exclude_commit_patterns = [
     "^build:",
