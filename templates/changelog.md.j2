@@ -1,8 +1,7 @@
 # Changelog
 
 {% for version in context.history.versions %}
-## [{{ version.tag }}](https://github.com/crimson206/change-logger/commit/{{ version.commit.hexsha }})
- ({{ version.tagged_date.strftime('%Y-%m-%d') }})
+## [{{ version.tag }}]({{ version.commit.hexsha }}) ({{ version.tagged_date.strftime('%Y-%m-%d') }})
 
 {% for section_name, commits in version.sections.items() %}
 ### {{ section_name }}

@@ -11,6 +11,8 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # 이 권한이 반드시 필요합니다!
     strategy:
       matrix:
         python-version: ["3.8", "3.9", "3.10", "3.11"]
