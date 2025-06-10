@@ -1,3 +1,3 @@
 # change-logger
 
-any message
+any message2
