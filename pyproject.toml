@@ -87,13 +87,3 @@ token = { env = "GH_TOKEN" }
 [tool.semantic_release.publish]
 dist_glob_patterns = ["dist/*"]
 upload_to_vcs_release = true
-
-plugins = [
-    "@semantic-release/commit-analyzer",  # 커밋 분석
-    "@semantic-release/release-notes-generator", # 릴리즈 노트 생성 (CHANGELOG.md 내용의 기반)
-    ["@semantic-release/changelog", { "changelogFile": "CHANGELOG.md" }], # CHANGELOG.md 업데이트
-    "@semantic-release/git", # 업데이트된 파일 (CHANGELOG.md)을 Git에 커밋 및 푸시
-    "@semantic-release/github", # GitHub Release 생성
-    "@semantic-release/npm", # npm 퍼블리싱 (파이썬 프로젝트라면 필요 없을 수 있음, 예시)
-    # "@semantic-release/pypi", # PyPI 퍼블리싱 (파이썬 프로젝트라면 필요)
-]
