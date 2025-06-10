@@ -2,6 +2,7 @@
 Main module for the package
 """
 
+from semantic_release import changelog
 
 def hello_world(name: str = "World") -> str:
     """

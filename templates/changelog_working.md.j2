@@ -1,0 +1,88 @@
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+
+{{ context.repo_name }}
+
+{{ context.repo_owner }}
+
+{{ context.hvcs_type }}
+
+{{ context.history }}
+
+{{ context.history.unreleased }}
+
+{{ context.history.released }}
+
+{% for key, value in context.history.unreleased.items() %}{{ key }}{% endfor %}
+
+{% for version, release in context.history.released.items() %}{{ version }}{% endfor %}
+
+{% if context.history.unreleased %}Has unreleased{% endif %}
+
+{% if context.history.released %}Has releases{% endif %}
+
+{{ context.repo_name | title }}
+
+{{ context.history.unreleased.keys() | list }}
+
+{% if context.history.unreleased and context.history.unreleased.values() | sum(start=[]) | length > 0 %}Unreleased changes{% endif %}
+
+{% for version, release in context.history.released.items() %}{{ release.tagged_date.strftime('%Y-%m-%d') }}{% endfor %}
+
+{{ "https://github.com/" + context.repo_owner + "/" + context.repo_name }}
+
+{% for commit_type, commits in context.history.unreleased.items() %}
+{% for commit in commits %}
+- {{ commit.description }}
+{% endfor %}
+{% endfor %}
+
+{% for commit_type, commits in context.history.unreleased.items() %}{% for commit in commits %}{{ commit.descriptions }}{% endfor %}{% endfor %}
+
+{% for commit_type, commits in context.history.unreleased.items() %}{% for commit in commits %}{{ commit.descriptions[0] if commit.descriptions else 'No description' }}{% endfor %}{% endfor %}
+
+{% for commit_type, commits in context.history.unreleased.items() %}{% for commit in commits %}{{ commit.descriptions | join(' ') }}{% endfor %}{% endfor %}
+
+{% for commit_type, commits in context.history.unreleased.items() %}{% for commit in commits %}{{ commit.body if commit.body else 'No body' }}{% endfor %}{% endfor %}
+
+{% for commit_type, commits in context.history.unreleased.items() %}
+{% for commit in commits %}
+Title: {{ commit.descriptions[0] if commit.descriptions else 'No title' }}
+{% if commit.descriptions and commit.descriptions | length > 1 %}
+Body: {{ commit.descriptions[1:] | join('\n') }}
+{% endif %}
+{% endfor %}
+{% endfor %}
+
+{% for commit_type, commits in context.history.unreleased.items() %}{% for commit in commits %}{{ commit.breaking_descriptions }}{% endfor %}{% endfor %}
+
+{% for commit_type, commits in context.history.unreleased.items() %}
+### {{ commit_type }}
+{% for commit in commits %}
+- **{{ commit.descriptions[0] if commit.descriptions else 'No title' }}**
+{% if commit.descriptions and commit.descriptions | length > 1 %}
+  {% for desc in commit.descriptions[1:] %}
+  {{ desc }}
+  {% endfor %}
+{% endif %}
+{% if commit.breaking_descriptions %}
+  **BREAKING CHANGES:**
+  {% for breaking in commit.breaking_descriptions %}
+  - {{ breaking }}
+  {% endfor %}
+{% endif %}
+{% endfor %}
+{% endfor %}
+
+{% for commit_type, commits in context.history.unreleased.items() %}{% for commit in commits %}{{ commit.commit.hexsha[:8] }}{% endfor %}{% endfor %}
+
+{% for commit_type, commits in context.history.unreleased.items() %}
+{% for commit in commits %}
+- {{ commit.descriptions[0] if commit.descriptions else 'No description' }} ([{{ commit.commit.hexsha[:8] }}](https://github.com/{{ context.repo_owner }}/{{ context.repo_name }}/commit/{{ commit.commit.hexsha }}))
+{% endfor %}
+{% endfor %}

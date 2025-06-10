@@ -1,9 +1,6 @@
-# Changelog
+## Unreleased
 
-{% for version, release in context.history.released.items() %}
-## v{{ version }} <small>({{ release.tagged_date.strftime('%Y-%m-%d') }})</small>
-
-{% if release.elements %}
+{% if context.history.unreleased and context.history.unreleased.values() | sum(start=[]) | length > 0 %}
 
 {% for commit_type, commits in context.history.unreleased.items() if commits and commit_type != "unknown" %}
 {% if commit_type == "features" %}
@@ -52,9 +49,5 @@
 {% endfor %}
 
 {% else %}
-*No significant changes in this release.*
+*No unreleased changes.*
 {% endif %}
-
----
-
-{% endfor %}
